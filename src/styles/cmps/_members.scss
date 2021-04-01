@@ -13,6 +13,10 @@
         margin: 4px;
     }
 
+    .member-container {
+        cursor: pointer;
+    }
+
     .member-fullname {
         text-transform: none !important;
         font-size: 14px !important;
@@ -50,7 +54,6 @@
         }
 
         & .member-container {
-            cursor: pointer;
             user-select: none;
             // margin-bottom: 2px;
             padding: 5px;
