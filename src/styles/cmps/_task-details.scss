@@ -7,6 +7,7 @@
     background-color: rgba(37, 37, 37, 0.432);
     overflow: auto;
     padding-bottom: 8px;
+    // margin-bottom: 0;
 
     h1 {
         text-align: left;
@@ -42,10 +43,6 @@
         top: 0;
         padding-bottom: 0;
     }
-    // @include for-normal-layout{
-    //     padding-bottom: 10px;
-    // }
-    // background-color: rgba(37, 37, 37, 0.432);
 }
 
 .close-screen {

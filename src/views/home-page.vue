@@ -8,14 +8,14 @@
         <div class="explanation">
           Collaborate, manage projects, and reach new productivity peaks. From
           high rises to the home office, the way your team works is
-          unique—accomplish it all with Taskolo.
+          unique accomplish it all with Taskolo.
         </div>
 
         <button @click="goDemoBoard" class="board-demo-btn">Try it</button>
       </section>
 
       <section class="logo">
-        <img alt="Vue logo" src="../assets/logo.png" />
+        <img alt="Vue logo" src="../assets/logo/hero.png" />
       </section>
     </main>
   </div>

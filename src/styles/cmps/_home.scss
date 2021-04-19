@@ -1,30 +1,57 @@
 .home {
-      background-color: #f2f0ff;
+      // background-color: #f2f0ff;
       color: rgb(9, 30, 66);
-
+      height: 100vh;
+      width: 100%;
+      background: rgb(220, 213, 252);
+      background: linear-gradient(
+            0deg,
+            rgba(220, 213, 252, 0.2976540958180147) 0%,
+            rgba(235, 231, 255, 1) 47%,
+            rgba(235, 231, 255, 1) 100%
+      );
       .home-main-container {
             display: grid;
-            grid-template-columns: 1fr 6fr 1fr;
+            grid-template-columns: 1fr 6fr 1fr 1fr;
             height: 100%;
+            position: fixed;
+            bottom: 0;
+            @include for-wide-layout {
+                  grid-template-columns: 1fr 6fr 1fr;
+                  bottom: 60px;
+                  // padding-bottom: 50px;
+            }
 
             .home-main-area {
                   grid-column-start: 2;
                   grid-column-end: 3;
                   text-align: left;
-                  width: 665px;
+                  width: 70%;
+                  margin-top: 20vh;
+                  @include for-wide-layout {
+                        width: 100%;
+                  }
             }
 
             .title {
-                  font-size: 48px;
+                  font-size: 3rem;
                   padding-block-start: 10px;
                   line-height: 60px;
                   margin-block-end: 8px;
+                  @include for-wide-layout {
+                        font-size: 2.7rem;
+                        line-height: 50px;
+                        // margin-block-end: 8px;
+                  }
             }
 
             .explanation {
-                  font-size: 20px;
+                  font-size: 1.2rem;
                   line-height: 30px;
                   margin-block-end: 24px;
+                  @include for-wide-layout {
+                        font-size: 1rem;
+                  }
             }
 
             .board-demo-btn {
@@ -38,11 +65,28 @@
                   border-radius: 5px;
                   font-size: 20px;
                   padding: 12px 48px;
+                  // @include for-normal-layout {
+                  //       margin-bottom: 50px;
+                  // }
             }
 
             .logo {
                   padding-block-start: 10px;
-                  margin-block-start: 24px;
+                  margin-block-start: 6vh;
+                  width: 400px;
+                  @include for-wide-layout {
+                        margin-right: 50px;
+                        width: 380px;
+                  
+                  }
+                  @include for-normal-layout {
+                        visibility: hidden;
+                        display: none;
+                  }
+                  img {
+                        width: 100%;
+                        margin-top: 10vh;
+                  }
             }
       }
 }
