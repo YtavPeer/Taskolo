@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async goDemoBoard() {
-      this.$router.push(`/board/606056b5f2a2af09afd9f2fb`);
+      this.$router.push(`/board/60891bc403012045ac043302`);
       const user = { username: "demo", password: "demo" };
       // await this.$store.dispatch({
       //   type: "logout",
