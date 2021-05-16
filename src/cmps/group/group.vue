@@ -133,6 +133,7 @@ export default {
       return this.$store.getters.currBoard;
     },
     clonedGroup() {
+      console.log('***********group*******', this.group.tasks);
       return this.group;
     },
     dragOptions() {

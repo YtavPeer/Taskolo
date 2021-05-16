@@ -247,6 +247,7 @@ export default {
       }
     },
     async isDoneToggle() {
+      console.log('***IsDoenToggle',this.task );
       try {
         await this.$store.commit({
           type: "setTaskById",
@@ -277,6 +278,8 @@ export default {
       this.$emit("task-modal-open", this.task);
     },
   },
-  created() {},
+  created() {
+    console.log('***here***', this.task);
+  },
 };
 </script>

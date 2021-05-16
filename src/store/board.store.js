@@ -35,8 +35,11 @@ export const boardStore = {
             state.currTask = task
         },
         setTaskById(state, { taskId }) {
+            console.log('setTaslById', taskId);
             state.currBoard.groups.forEach(group => {
+                console.log('**group from store**', group);
                 group.tasks.forEach(task => {
+                    console.log('*** task from store', task.id);
                     if (task.id === taskId) {
                         state.currTask = task
                         state.currGroup = group
