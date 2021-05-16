@@ -159,7 +159,7 @@ export default {
       this.screenWidth = window.innerWidth;
       // console.log("this.screenWidth:", this.screenWidth);
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
-      console.log("isMobileScreen:", this.isMobileScreen);
+      // console.log("isMobileScreen:", this.isMobileScreen);
     },
   },
   mounted() {
