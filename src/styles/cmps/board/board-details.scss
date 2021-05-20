@@ -30,6 +30,14 @@
       }
 }
 
+.loader{
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      height: 100vh;
+}
+
 .board-details {
       padding: 0 4px;
       // margin-inline-start: 4px;
