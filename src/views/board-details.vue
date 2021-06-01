@@ -73,6 +73,9 @@
     </main>
     <router-view />
   </section>
+  <div v-else>
+    <img src="@/assets/logo/loader.gif" alt="loader">
+  </div>
 </template>
 <script>
 import mainHeader from "../cmps/main-header";
