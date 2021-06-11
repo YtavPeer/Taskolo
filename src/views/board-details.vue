@@ -153,7 +153,7 @@ export default {
       });
     },
     openPreviewModal(task) {
-      console.log("the task is", task);
+      // console.log("the task is", task);
       this.isModalOpen = true;
     },
     onResize() {

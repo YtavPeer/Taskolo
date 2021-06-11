@@ -40,12 +40,12 @@ export default {
             this.$emit("save-label", this.label);
         },
         setCurrColor(color) {
-            console.log("setting color...", color);
+            // console.log("setting color...", color);
             this.label.color = color;
         },
     },
     created() {
-        console.log("labelToEdit inside labels_edit", this.labelToEdit);
+        // console.log("labelToEdit inside labels_edit", this.labelToEdit);
         this.label = { ...this.labelToEdit };
     },
 };

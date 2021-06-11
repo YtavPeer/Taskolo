@@ -60,7 +60,7 @@ export default {
         }
     },
     created() {
-        console.log('activity', this.activites)
+        // console.log('activity', this.activites)
     }
 };
 </script>

@@ -94,7 +94,7 @@ export default {
       this.$emit("close");
     },
     changeBackground(background) {
-      console.log("background:", background);
+      // console.log("background:", background);
       const newBoard = this.$clone(this.board);
       // if (type === 'color'){
       newBoard.style = background;

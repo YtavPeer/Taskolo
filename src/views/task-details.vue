@@ -495,8 +495,9 @@ export default {
         addMember(member) {
             try {
                 // task clone
-                const clone = require("rfdc");
-                const taskCopy = clone({ proto: true })(Object.create(this.task));
+                // const clone = require("rfdc");
+                // const taskCopy = clone({ proto: true })(Object.create(this.task));
+                const taskCopy = this.$clone(this.task);
 
                 // const taskCopy = this.$clone({ proto: true })(
                 //     Object.create(this.task)
@@ -529,9 +530,10 @@ export default {
             }
         },
         updateChecklist(checklist) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
-            checklist = clone({ proto: true })(Object.create(checklist));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
+            checklist = this.$clone(checklist);
             // if (!taskCopy.checklists) taskCopy.checklists = [];
             // if (!checklist.id) checklist.id = utilService.makeId();
             const isChecklistExist = taskCopy.checklists.some(
@@ -553,8 +555,9 @@ export default {
             });
         },
         addToChecklist(title) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
             if (!taskCopy.checklists) {
                 taskCopy.checklists = [];
             }
@@ -569,8 +572,9 @@ export default {
             });
         },
         deleteChecklist(checklistId) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
             const checklistIdx = taskCopy.checklists.findIndex(
                 (checklist) => checklist.id === checklistId
             );
@@ -593,8 +597,9 @@ export default {
             this.editedLabel = label;
 
             //save updated label to global board labels
-            const clone = require("rfdc");
-            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            // const clone = require("rfdc");
+            // const boardCopy = clone({ proto: true })(Object.create(this.board));
+            const boardCopy = this.$clone(this.board);
             const labelIdx = boardCopy.labels.findIndex((l) => l.id === label.id);
             boardCopy.labels.splice(labelIdx, 1, label);
             try {
@@ -606,8 +611,9 @@ export default {
         },
         addLabel(label) {
             // task clone
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
 
             //add labels to list
             let taskLabelIds = taskCopy.labelIds;
@@ -649,8 +655,8 @@ export default {
             // })
         },
         addUrl(url) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            const taskCopy = this.$clone(this.task);
             taskCopy.attachment = url;
             this.$store.dispatch({
                 type: "updateTask",
@@ -660,8 +666,9 @@ export default {
         },
         async updateDescription(updateDescription) {
             //dispatch
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
             taskCopy.description = updateDescription;
             this.$store.dispatch({
                 type: "updateTask",
@@ -671,8 +678,9 @@ export default {
         },
 
         updateCover(cover) {
-            const clone = require("rfdc");
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const clone = require("rfdc");
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
             taskCopy.style = cover;
             this.$store.dispatch({
                 type: "updateTask",
@@ -682,10 +690,11 @@ export default {
         },
 
         async copyTask(newCardPos) {
-            const clone = require("rfdc");
+            // const clone = require("rfdc");
             //TODO: Support board to board copy
 
-            const taskCopy = clone({ proto: true })(Object.create(this.task));
+            // const taskCopy = clone({ proto: true })(Object.create(this.task));
+            const taskCopy = this.$clone(this.task);
 
             //find group and push the curr task
             let groupIdx;
@@ -694,24 +703,26 @@ export default {
                 return group.id === newCardPos.copyTo.groupId;
             });
 
-            groupToCopy = clone({ proto: true })(Object.create(groupToCopy));
+            // groupToCopy = clone({ proto: true })(Object.create(groupToCopy));
+            groupToCopy = this.$clone(groupToCopy);
 
             if (newCardPos.isCopy) {
                 //new id + title to copied task
-                console.log("is copy!!", newCardPos.copyTo);
+                // console.log("is copy!!", newCardPos.copyTo);
                 taskCopy.id = utilService.makeId();
                 taskCopy.title = newCardPos.copyTo.title;
-                console.log(taskCopy, "task copy");
+                // console.log(taskCopy, "task copy");
             } else if (groupToCopy.id === this.group.id) return; //avoid 'moving' to same group
 
-            console.log("inserted task", taskCopy);
+            // console.log("inserted task", taskCopy);
             //"insert" to specific pos
             groupToCopy.tasks.splice(newCardPos.copyTo.position, 0, taskCopy);
 
             //delete if move
             if (!newCardPos.isCopy) this.deleteCard();
             //replace old group with updated group
-            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            // const boardCopy = clone({ proto: true })(Object.create(this.board));
+            const boardCopy = this.$clone(this.board);
             boardCopy.groups.splice(groupIdx, 1, groupToCopy);
             await this.$store.dispatch({
                 type: "updateBoard",
@@ -724,9 +735,10 @@ export default {
         },
 
         async deleteCard() {
-            const clone = require("rfdc");
+            // const clone = require("rfdc");
 
-            const boardCopy = clone({ proto: true })(Object.create(this.board));
+            // const boardCopy = clone({ proto: true })(Object.create(this.board));
+            const boardCopy = this.$clone(this.board);
             const groups = boardCopy.groups;
 
             const currGroupIdx = groups.findIndex(
@@ -785,7 +797,7 @@ export default {
             return coverColors;
         },
         taskActivites() {
-            console.log("this.board", this.board);
+            // console.log("this.board", this.board);
             return this.board.activities.filter(
                 (activity) => activity.task.id === this.task.id
             );

@@ -49,10 +49,10 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     userImg() {
-      console.log(
-        "this.$store.getters.loggedinUser:",
-        this.$store.getters.loggedinUser
-      );
+      // console.log(
+      //   "this.$store.getters.loggedinUser:",
+      //   this.$store.getters.loggedinUser
+      // );
       if (!this.$store.getters.loggedinUser) return;
       return this.$store.getters.loggedinUser.imgUrl;
     },

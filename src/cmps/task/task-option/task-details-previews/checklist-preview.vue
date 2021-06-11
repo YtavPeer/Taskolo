@@ -146,8 +146,10 @@ export default {
     },
   },
   created() {
-    const clone = require("rfdc");
-    this.checklist = clone({ proto: true })(Object.create(this.checklistProp));
+    // const clone = require("rfdc");
+    // this.checklist = clone({ proto: true })(Object.create(this.checklistProp));
+    // const clone = require("rfdc");
+    this.checklist = this.$clone(this.checklistProp);
   },
   components: {
     checklistDeleteConfirm,

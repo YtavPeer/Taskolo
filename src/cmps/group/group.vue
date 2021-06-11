@@ -220,7 +220,7 @@ export default {
     },
     async updateGroupTitle() {
       try {
-        console.log("new title", this.title);
+        // console.log("new title", this.title);
         const boardCopy = this.$clone(this.getBoard);
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
@@ -241,7 +241,7 @@ export default {
       this.screenWidth = window.innerWidth;
       // console.log("this.screenWidth:", this.screenWidth);
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
-      console.log("isMobileScreen:", this.isMobileScreen);
+      // console.log("isMobileScreen:", this.isMobileScreen);
     },
     longTapHandler() { 
       this.isMobileScreen = false;

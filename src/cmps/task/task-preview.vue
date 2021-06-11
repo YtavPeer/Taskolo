@@ -206,7 +206,7 @@ export default {
       return currLabel.color;
     },
     openEditModal() {
-      console.log("task modal open");
+      // console.log("task modal open");
     },
     async deleteTask() {
       try {
@@ -255,7 +255,7 @@ export default {
       }
     },
     openPreviewModal() {
-      console.log("open modal");
+      // console.log("open modal");
       this.$emit("task-modal-open", this.task);
     },
   },
