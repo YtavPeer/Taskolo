@@ -75,6 +75,7 @@ export default {
       },
     };
   },
+  
   methods: {
     taskPositionChanged() {
       this.$emit("task-position-changed", this.copyTo);
