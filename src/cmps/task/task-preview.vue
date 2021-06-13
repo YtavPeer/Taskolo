@@ -17,13 +17,6 @@
             alt="sadf"
           />
 
-          <!-- <font-awesome-icon
-            v-show="isEdit"
-            @click.stop="openPreviewModal"
-            class="task-edit"
-            :icon="['fas', 'pencil-alt']"
-          />  -->
-
           <font-awesome-icon
             v-show="isEdit"
             @click.stop="deleteTask"
