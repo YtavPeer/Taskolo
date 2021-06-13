@@ -1,6 +1,6 @@
 <template>
   <header class="app-header flex align-center space-between">
-    <section class="app-header-container flex align-center ">
+    <section class="app-header-container flex align-center">
       <nav class="flex align-center">
         <button class="home-btn flex center" @click="$router.push('/')">
           <font-awesome-icon :icon="['fas', 'home']" />
@@ -9,7 +9,10 @@
           Boards
         </button>
       </nav>
-      <section class="logo-container flex align-center" @click="$router.push('/')">
+      <section
+        class="logo-container flex align-center"
+        @click="$router.push('/')"
+      >
         <img src="../assets/logo/logo-img-white.png" alt="" />
         <img src="../assets/logo/logo-txt-white.png" alt="" />
       </section>
@@ -27,7 +30,6 @@
       v-if="isProfileModalOpen"
       title="Account"
     >
-      <!-- <members :members="this.currBoard.members" @add-member="addMember" /> -->
       <profile-modal />
     </base-task-modal>
   </header>
@@ -41,7 +43,6 @@ export default {
   data() {
     return {
       isProfileModalOpen: false,
-      // isLoginUser: ,
     };
   },
   computed: {
@@ -49,10 +50,6 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     userImg() {
-      // console.log(
-      //   "this.$store.getters.loggedinUser:",
-      //   this.$store.getters.loggedinUser
-      // );
       if (!this.$store.getters.loggedinUser) return;
       return this.$store.getters.loggedinUser.imgUrl;
     },

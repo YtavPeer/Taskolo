@@ -48,7 +48,6 @@ export default {
         },
         copyTask() {
             this.copyTo.title = this.title;
-            // console.log('title inside copy-card', this.copyTo)
             this.$emit("move-task", {
                 copyTo: this.copyTo,
                 isCopy: true,

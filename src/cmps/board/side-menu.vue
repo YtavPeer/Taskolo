@@ -1,10 +1,8 @@
 <template>
   <section class="side-menu-container flex column">
-    <!-- <component :is="currComponent"></component> -->
     <button @click="closeMenu" class="close-menu flex center">
       <img src="@/assets/task-icon/trello-icon-pack/close.svg" />
     </button>
-    <!-- <component :is="currCmp"></component> -->
     <h1 class="menu-title flex center">Menu</h1>
 
     <section class="side-menu-content flex column align-center">
@@ -30,13 +28,6 @@
               Change Background
             </div>
           </label>
-          <!-- <input
-            @change="changeBackground"
-            id="background-input"
-            type="color"
-            v-model="backgroundColor"
-          /> -->
-          <!-- <color-picker /> -->
         </li>
         <li>
           <div class="side-menu-option" @click="moveToDashBoard">
@@ -49,13 +40,9 @@
           </div>
           <div class="aboutThisBoard"></div>
         </li>
-        <!-- <router-link to="/dashboard">Dashboard</router-link> -->
-        <!-- <li>more</li> -->
       </ul>
 
-      <!-- <component :is="currCmp"></component> -->
       <div v-if="isActivitiesShow" class="menu-activities">
-        <!-- <activity-list :board="board" /> -->
         <activity-preview :activites="board.activities" />
       </div>
 
@@ -64,7 +51,6 @@
       </div>
     </section>
   </section>
-  <!-- </section> -->
 </template>
 
 <script>
@@ -76,17 +62,13 @@ export default {
   props: {
     board: {
       type: Object,
-      // currCmp: 'menu-home'
     },
   },
   name: "side-menu",
   data() {
     return {
-      // backgroundColor: "white",
       isActivitiesShow: true,
       isBackgroundShow: false,
-
-      // currCmp: activityList
     };
   },
   methods: {
@@ -94,15 +76,8 @@ export default {
       this.$emit("close");
     },
     changeBackground(background) {
-      // console.log("background:", background);
       const newBoard = this.$clone(this.board);
-      // if (type === 'color'){
       newBoard.style = background;
-      // }
-      // else if (type === 'img'){
-      // newBoard.style = `url(${background})`;
-      // }
-      // console.log('newBoard:', newBoard)
       this.$store.dispatch({ type: "updateBoard", board: newBoard });
     },
     moveToDashBoard() {
@@ -117,7 +92,6 @@ export default {
         this.isActivitiesShow = false;
         this.isBackgroundShow = true;
       }
-      // this.isBackgroundShow = !this.isActivitiesShow
     },
   },
   components: {
@@ -125,8 +99,5 @@ export default {
     activityPreview,
     ChangeBackground,
   },
-  // created() {
-  //   console.log(this.board);
-  // },
 };
 </script>

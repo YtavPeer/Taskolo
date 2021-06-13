@@ -82,14 +82,14 @@ export default {
   },
   computed: {
     selectedBoard() {
-      if (!this.copyTo.board) return this.currBoard; //remove
+      if (!this.copyTo.board) return this.currBoard;
       const selectedBoard = this.boards.find(
         (board) => board._id === this.copyTo.boardId
       );
       return selectedBoard;
     },
     taskCount() {
-      if (!this.copyTo.groupId) return this.currGroup.tasks.length; //remove
+      if (!this.copyTo.groupId) return this.currGroup.tasks.length;
       const selectedGroup = this.selectedBoard.groups.find(
         (group) => group.id === this.copyTo.groupId
       );

@@ -9,15 +9,12 @@
       v-if="isModalOpen"
     ></task-preview-modal>
     <main-header />
-    <!-- <div class="main-screen" :style="{ backgroundColor: currBoard.style }"></div> -->
     <board-header @open="isMenuOpen = true" :currBoard="currBoard" />
     <side-menu
       @close="isMenuOpen = false"
       :class="{ 'menu-show': isMenuOpen }"
       :board="currBoard"
     />
-    <!-- 
-    :disabled= "isMobileScreen" -->
     <main>
       <draggable
         :disabled="isMobileScreen"
@@ -73,7 +70,9 @@
     </main>
     <router-view />
   </section>
-  <div class="loader flex center" v-else><img src="../assets/logo/loader.gif" alt=""></div>
+  <div class="loader flex center" v-else>
+    <img src="../assets/logo/loader.gif" alt="" />
+  </div>
 </template>
 <script>
 import mainHeader from "../cmps/main-header";
@@ -82,7 +81,6 @@ import boardHeader from "../cmps/board/board-header";
 import sideMenu from "../cmps/board/side-menu";
 import { utilService } from "../services/util.service.js";
 import draggable from "vuedraggable";
-import { socketService } from "../services/socket.service.js";
 import taskPreviewModal from "../cmps/task/task-preview-modal";
 export default {
   name: "board-details",
@@ -114,7 +112,6 @@ export default {
   },
   methods: {
     openMenu() {
-      // console.log('efewf');
       this.isMenuOpen = true;
     },
     closeMenu() {
@@ -152,22 +149,18 @@ export default {
         board: this.currBoard,
       });
     },
-    openPreviewModal(task) {
-      // console.log("the task is", task);
+    openPreviewModal() {
       this.isModalOpen = true;
     },
     onResize() {
       this.screenWidth = window.innerWidth;
-      // console.log("this.screenWidth:", this.screenWidth);
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
-      // console.log("isMobileScreen:", this.isMobileScreen);
     },
   },
   mounted() {
     this.onResize();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
-      // console.log(window.innerWidth);
     });
   },
   beforeDestroy() {
@@ -176,7 +169,6 @@ export default {
   watch: {
     boardId: {
       handler() {
-        // console.log(this.boardId)
         this.$store.dispatch({
           type: "loadBoard",
           boardId: this.boardId,

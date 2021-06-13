@@ -1,6 +1,6 @@
 <template>
   <section class="task-labels">
-  <el-input type="text" placeholder="Search labels..."/>
+    <el-input type="text" placeholder="Search labels..." />
     <h3>Labels</h3>
     <div
       v-for="label in labelsFromProp"
@@ -8,31 +8,21 @@
       class="flex"
       @click="addLabel(label)"
     >
-      <div class="label flex align-center" :style="{ backgroundColor: label.color }"
-        >
+      <div
+        class="label flex align-center"
+        :style="{ backgroundColor: label.color }"
+      >
         <span class="label-title">{{ label.title }}</span>
         <a class="v-icon" v-show="isAlreadyTaskLabel(label.id)" href="#"
-          ><i class="el-icon-check"></i></a
-      ></div>
+          ><i class="el-icon-check"></i
+        ></a>
+      </div>
       <span class="label-edit flex center" @click="openLabelsEdit(label)">
-          <img src="@/assets/task-icon/trello-icon-pack/edit-pencil-slate-blue.svg"/>
+        <img
+          src="@/assets/task-icon/trello-icon-pack/edit-pencil-slate-blue.svg"
+        />
       </span>
     </div>
-
-    <!-- <button>Create a new label</button> -->
-    <!-- 
-        <section v-if="labelToEdit" class="edit-label-container">
-            <div
-                v-for="label in labels"
-                :key="label.id"
-                class="label-edit-item"
-                :style="{ backgroundColor: label.color }"
-            ></div>
-            <div class="label-edit-btns flex space-between">
-                <button>Save</button>
-                <button>Delete</button>
-            </div>
-        </section> -->
   </section>
 </template>
 
@@ -42,8 +32,7 @@ export default {
   props: {
     labels: {},
     editedLabel: {},
-    taskLabelIds: {}, //specific task labels
-    // labelToEdit: null,
+    taskLabelIds: {},
   },
   data() {
     return {
@@ -52,8 +41,6 @@ export default {
   },
   methods: {
     openLabelsEdit(label) {
-      // console.log(label, this.labels)
-      // this.labelToEdit = {...label};
       this.$emit("open-label-edit", label);
     },
     setEditedLabel() {
@@ -64,7 +51,6 @@ export default {
       this.labelsFromProp.splice(labelIdx, 1, this.editedLabel);
     },
     addLabel(label) {
-      //   console.log("adding label...", label);
       this.$emit("add-label", label);
     },
     isAlreadyTaskLabel(labelId) {

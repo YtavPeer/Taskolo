@@ -56,12 +56,9 @@ export default {
   },
   methods: {
     checkCredentials() {
-      // var re = /\S+@/;
-      // this.isEditMail = true;
       if (this.credentials.username === "" || this.credentials.password === "")
         this.isFullnameOrPassword = false;
       else this.isFullnameOrPassword = true;
-      //   return re.test(email);
     },
     async login() {
       try {

@@ -7,8 +7,8 @@
 
         <div class="explanation">
           Collaborate, manage projects, and reach new productivity peaks. From
-          high rises to the home office, the way your team works is
-          unique accomplish it all with Taskolo.
+          high rises to the home office, the way your team works is unique
+          accomplish it all with Taskolo.
         </div>
 
         <button @click="goDemoBoard" class="board-demo-btn">Try it</button>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import mainHeader from "../cmps/main-header";
 
 export default {
@@ -39,10 +38,6 @@ export default {
     async goDemoBoard() {
       this.$router.push(`/board/606056b5f2a2af09afd9f2fb`);
       const user = { username: "demo", password: "123" };
-      // await this.$store.dispatch({
-      //   type: "logout",
-      //   // userCred: user,
-      // });
       await this.$store.dispatch({
         type: "login",
         userCred: user,

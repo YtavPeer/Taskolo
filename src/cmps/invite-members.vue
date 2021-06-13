@@ -2,26 +2,20 @@
   <section class="members-modal" v-if="currBoard">
     <input type="text" placeholder="Search user..." />
     <section class="member-invite-container">
-
-    <div
-      v-for="user in users"
-      :key="user._id"
-      @click="addUser(user)"
-      class="member-container flex align-center space-between"
-    >
-      <div class="user-data flex align-center space-between">
-        <!-- <div class="user-icon"> -->
-        <img class="member" :src="user.imgUrl" alt="-" />
-        <!-- </div> -->
-        <h3>{{ user.fullname }}</h3>
+      <div
+        v-for="user in users"
+        :key="user._id"
+        @click="addUser(user)"
+        class="member-container flex align-center space-between"
+      >
+        <div class="user-data flex align-center space-between">
+          <img class="member" :src="user.imgUrl" alt="-" />
+          <h3>{{ user.fullname }}</h3>
+        </div>
+        <a v-if="isAlreadyTaskUser(user)" href="#"
+          ><i class="el-icon-check"></i>
+        </a>
       </div>
-      <a v-if="isAlreadyTaskUser(user)" href="#"
-        ><i class="el-icon-check"></i>
-      </a>
-    </div>
-    <!-- <div>
-      <a href="#" class="other-users-btn">Show other team users</a>
-    </div> -->
     </section>
   </section>
 </template>
@@ -29,18 +23,9 @@
 <script>
 export default {
   name: "users",
-  props: {
-    // users: {},
-    // taskUsers: {},
-  },
-  data() {
-    return {
-      //   users: null
-    };
-  },
   computed: {
     currBoard() {
-      return this.$clone(this.$store.getters.currBoard)  
+      return this.$clone(this.$store.getters.currBoard);
     },
     users() {
       return this.$store.getters.users;

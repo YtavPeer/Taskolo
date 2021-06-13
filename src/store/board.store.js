@@ -40,8 +40,6 @@ export const boardStore = {
                     if (task.id === taskId) {
                         state.currTask = task
                         state.currGroup = group
-
-
                     }
                 })
             });
@@ -56,7 +54,6 @@ export const boardStore = {
             state.boards = state.boards.filter(board => board._id !== boardId)
         },
         addActivity(state, { activity }) {
-            // const byUser = context.rootGetters
             state.currBoard.activities.unshift(activity)
         }
     },
@@ -65,12 +62,6 @@ export const boardStore = {
             try {
                 const boards = await boardService.query();
                 context.commit({ type: 'setBoards', boards })
-                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
-                // context.commit({ type: 'addBoard', board })
-                // })
-
-
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
                 throw err
@@ -78,12 +69,10 @@ export const boardStore = {
         },
         async loadBoard({ commit }, { boardId }) {
             try {
-                // console.log(boardId, "board id")
                 const board = await boardService.getById(boardId)
                 socketService.emit('board-watch', boardId);
                 socketService.off('board-update')
                 socketService.on('board-update', board => {
-                    // console.log('board update socket', board)
                     commit({ type: 'setBoard', board })
                 })
                 commit({ type: 'setBoard', board })
@@ -104,14 +93,11 @@ export const boardStore = {
         },
         async updateTask(context, { task, activityTxt }) {
             try {
-                // console.log('task', task)
                 context.commit({ type: 'setTask', task })
                 const clone = require("rfdc");
                 const boardCopy = clone({ proto: true })(
                     Object.create(context.state.currBoard)
                 );
-                // console.log('this:', this)
-                // const boardCopy = this.$clone(context.state.currBoard)
                 let currTaskIdx;
                 const currGroupIdx = boardCopy.groups.findIndex((group) => {
                     if (group.id === context.state.currGroup.id) {
@@ -164,7 +150,6 @@ export const boardStore = {
                 task
             }
             context.commit({ type: 'addActivity', activity })
-            // console.log(activity)
         }
     }
 }

@@ -194,12 +194,9 @@ export default {
     getTaskColor(taskLabelId) {
       let labels = this.currBoard.labels;
       let currLabel = labels.find((label) => label.id === taskLabelId);
-      // console.log('currLabel', currLabel)
       return currLabel.color;
     },
-    openEditModal() {
-      // console.log("task modal open");
-    },
+    openEditModal() {},
     async deleteTask() {
       try {
         const boardCopy = this.$clone(this.getBoard);
@@ -214,7 +211,6 @@ export default {
         );
 
         boardCopy.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
-        //update board
         await this.$store.dispatch({ type: "updateBoard", board: boardCopy });
       } catch (error) {
         console.log("task-preview cmp: error with delete task", error);
@@ -247,7 +243,6 @@ export default {
       }
     },
     openPreviewModal() {
-      // console.log("open modal");
       this.$emit("task-modal-open", this.task);
     },
   },

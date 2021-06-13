@@ -39,7 +39,6 @@
       <span class="quick-icon"></span>
       <span class="quick-title">Delete</span>
     </div>
-    
   </section>
 </template>
 

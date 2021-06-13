@@ -1,15 +1,10 @@
 <template>
   <div class="modal-container">
-
-        <ul class="clean-list">
-              <li @click="deleteGroup">
-                  delete this list
-              </li>
-               <li>
-                    add a card
-              </li>
-        </ul>
-  </div> 
+    <ul class="clean-list">
+      <li @click="deleteGroup">delete this list</li>
+      <li>add a card</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -20,7 +15,7 @@ export default {
       this.$emit("closeMenu");
     },
     deleteGroup() {
-           this.$emit("delete-group");
+      this.$emit("delete-group");
     },
   },
 };
