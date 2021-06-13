@@ -3,7 +3,6 @@
     <img src="@/assets/task-icon/left-alignment.svg" alt="" />
     <div class="title-container flex align-center">
       <h3>Description</h3>
-      <!-- <button @click="openEditInput">Edit</button> -->
     </div>
 
     <div
@@ -24,7 +23,9 @@
     ></textarea>
     <div v-if="isDescriptionEdit" class="desc-input-buttons flex align-center">
       <button @click="updateDesc" class="flex center">Save</button>
-      <button @click="isDescriptionEdit = false" class="flex center"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
+      <button @click="isDescriptionEdit = false" class="flex center">
+        <img src="@/assets/task-icon/trello-icon-pack/close.svg" />
+      </button>
     </div>
   </section>
 </template>

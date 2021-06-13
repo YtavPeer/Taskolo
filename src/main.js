@@ -5,35 +5,45 @@ import router from './router';
 import { store } from './store'
 import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
-//font awesome
-
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import {
+  faHome,
+  faTrashAlt,
+  faTag,
+  faPaperclip,
+  faArrowRight,
+  faMinus
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  faCheckSquare,
+  faSquare,
+  faComment,
+  faUser,
+  faClock
+} from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
 import './styles/main.scss'
-
 import Vue2TouchEvents from 'vue2-touch-events'
 
-Vue.use(Vue2TouchEvents
-  // longTapTimeInterval: 400,
+library.add(
+  faHome,
+  faTrashAlt,
+  faCheckSquare,
+  faSquare,
+  faComment,
+  faUser,
+  faTag,
+  faPaperclip,
+  faArrowRight,
+  faMinus,
+  faClock
 )
 
-// import Calendar from 'v-calendar/lib/components/calendar.umd'
-// import DatePicker from 'v-calendar/lib/components/date-picker.umd'
-
-// // Register components in your 'main.js'
-// Vue.component('calendar', Calendar)
-// Vue.component('date-picker', DatePicker)
-Vue.use(require('vue-moment'));
-
-
-library.add(fab, fas, far);
-
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.use(Vue2TouchEvents)
+
+Vue.use(require('vue-moment'));
 
 import VCalendar from 'v-calendar';
 Vue.use(VCalendar)
@@ -49,9 +59,6 @@ Vue.mixin({
     $clone: require('rfdc')({ proto: true }),
   }
 })
-
-
-
 
 new Vue({
   router,

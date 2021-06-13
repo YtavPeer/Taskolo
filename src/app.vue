@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    <!-- <main-header /> -->
-    <router-view  />
+    <router-view />
   </div>
 </template>
 
 <script>
-// import mainHeader from "../src/cmps/main-header";
 export default {
-  components: {
-    // mainHeader,
-  },
+  components: {},
 };
 </script>
 
 
 <style lang="scss">
 #app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

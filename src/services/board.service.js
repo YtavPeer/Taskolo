@@ -1,8 +1,5 @@
 import { httpService } from './http.service'
-import { storageService } from './async-storage.service'
 import { utilService } from './util.service'
-import { userService } from './user.service'
-import { board } from '../data/board.js'
 
 export const boardService = {
   add,
@@ -15,8 +12,6 @@ export const boardService = {
   getEmptyCheckList,
   getEmptyTodo
 }
-
-const KEY = 'board'
 
 function query() {
   return httpService.get(`board`)

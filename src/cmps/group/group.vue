@@ -34,16 +34,6 @@
           </base-modal>
         </div>
       </div>
-      <!-- :class="{'drag-start': drag}" -->
-
-      <!-- v-touch:touchhold="longTapHandler"
-          v-touch:end = "endLongTapHandler"
-        
-          :scroll-sensitivity="200" 
-              :scroll-sensitivity="200" 
-          :scroll-sensitivity="200" -->
-
-          <!-- :disabled="isMobileScreen" -->
       <div class="group-main-body">
         <draggable
           :options="isMobile"
@@ -146,7 +136,7 @@ export default {
     isMobile() {
       if (this.isMobileScreen) {
         return { delay: 80 };
-      }else return { delay: 0 }
+      } else return { delay: 0 };
     },
   },
   methods: {
@@ -220,7 +210,6 @@ export default {
     },
     async updateGroupTitle() {
       try {
-        console.log("new title", this.title);
         const boardCopy = this.$clone(this.getBoard);
         var groups = boardCopy.groups;
         var currGroupIdx = groups.findIndex(
@@ -239,11 +228,9 @@ export default {
     },
     onResize() {
       this.screenWidth = window.innerWidth;
-      // console.log("this.screenWidth:", this.screenWidth);
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
-      console.log("isMobileScreen:", this.isMobileScreen);
     },
-    longTapHandler() { 
+    longTapHandler() {
       this.isMobileScreen = false;
     },
     endLongTapHandler() {
@@ -254,7 +241,6 @@ export default {
     this.onResize();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
-      // console.log(window.innerWidth);
     });
   },
   beforeDestroy() {

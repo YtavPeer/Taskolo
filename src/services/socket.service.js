@@ -1,14 +1,13 @@
 import io from 'socket.io-client'
-import {httpService} from './http.service'
+import { httpService } from './http.service'
 
 export const SOCKET_EMIT_USER_WATCH = 'user-watch';
 export const SOCKET_EVENT_USER_UPDATED = 'user-updated';
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added';
 
 
-const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
+const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
 export const socketService = createSocketService()
-// export const socketService = createDummySocketService()
 
 window.socketService = socketService
 
@@ -22,14 +21,14 @@ function createSocketService() {
     async setup() {
       if (socket) return
       await httpService.get('setup-session')
-      socket = io(baseUrl, { reconnection: false, withCredentials: true})
+      socket = io(baseUrl, { reconnection: false, withCredentials: true })
       socketIsReady = true;
     },
     async on(eventName, cb) {
       if (!socket) await socketService.setup()
       socket.on(eventName, cb)
     },
-    async off(eventName, cb=null) {
+    async off(eventName, cb = null) {
       if (!socket) await socketService.setup()
       if (!cb) socket.removeAllListeners(eventName)
       else socket.off(eventName, cb)
@@ -72,17 +71,8 @@ function createDummySocketService() {
       })
     },
     debugMsg() {
-      this.emit('chat addMsg', {from: 'Someone', txt: 'Aha it worked!'})
+      this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
     },
   }
   return socketService
 }
-
-
-// Basic Tests
-// function cb(x) {console.log(x)}
-// socketService.on('baba', cb)
-// socketService.emit('baba', 'DATA')
-// socketService.off('baba', cb)
-
-

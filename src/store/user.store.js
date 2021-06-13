@@ -1,10 +1,6 @@
 import { userService } from '../services/user.service'
 import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 
-// var localLoggedinUser = null;
-// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
-
-
 export const userStore = {
     state: {
         loggedinUser: userService.getLoggedinUser(),
@@ -49,11 +45,6 @@ export const userStore = {
             try {
                 const users = await userService.query();
                 context.commit({ type: 'setUsers', users })
-                // socketService.off(SOCKET_EVENT_REVIEW_ADDED)
-                // socketService.on(SOCKET_EVENT_REVIEW_ADDED, board => {
-                //     context.commit({ type: 'addBoard', board })
-                // })
-
             } catch (err) {
                 console.log('boardStore: Error in loadBoards', err)
                 throw err
@@ -130,7 +121,6 @@ export const userStore = {
                 console.log('userStore: Error in updateUser', err)
                 throw err
             }
-
         }
     }
 }
