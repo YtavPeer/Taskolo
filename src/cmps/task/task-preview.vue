@@ -17,13 +17,6 @@
             alt="sadf"
           />
 
-          <!-- <font-awesome-icon
-            v-show="isEdit"
-            @click.stop="openPreviewModal"
-            class="task-edit"
-            :icon="['fas', 'pencil-alt']"
-          />  -->
-
           <font-awesome-icon
             v-show="isEdit"
             @click.stop="deleteTask"
@@ -83,7 +76,6 @@
 
           <div class="badges flex">
             <div class="watch flex center" v-if="task.watch">
-              <!-- <font-awesome-icon :icon="['far', 'eye']" /> -->
               <img
                 class="task-prev-icon"
                 src="@/assets/task-icon/trello-icon-pack/watch.svg"

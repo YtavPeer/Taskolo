@@ -15,7 +15,6 @@
           ><i class="el-icon-check"></i></a
       ></div>
       <span class="label-edit flex center" @click="openLabelsEdit(label)">
-        <!-- <font-awesome-icon class="label-edit" :icon="['fas', 'pencil-alt']" -->
           <img src="@/assets/task-icon/trello-icon-pack/edit-pencil-slate-blue.svg"/>
       </span>
     </div>

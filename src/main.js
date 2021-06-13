@@ -5,18 +5,56 @@ import router from './router';
 import { store } from './store'
 import 'element-ui/lib/theme-chalk/index.css';
 import ElementUI from 'element-ui';
-//font awesome
+
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+// import { fab } from '@fortawesome/free-brands-svg-icons'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { far } from '@fortawesome/free-regular-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
+import {
+  faHome,
+  faTrashAlt,
+  faTag,
+  faPaperclip,
+  faArrowRight,
+  faMinus
+  // faCheckSquare,
+  // faSquare
+} from '@fortawesome/free-solid-svg-icons'
+import {
+  faCheckSquare,
+  faSquare,
+  faComment,
+  faUser,
+  faClock
+} from '@fortawesome/free-regular-svg-icons';
+// import {} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import './styles/main.scss'
 
 import Vue2TouchEvents from 'vue2-touch-events'
+
+
+library.add(
+  faHome,
+  faTrashAlt,
+  faCheckSquare,
+  faSquare,
+  faComment,
+  faUser,
+  faTag,
+  faPaperclip,
+  faArrowRight,
+  faMinus,
+  faClock
+)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 
 Vue.use(Vue2TouchEvents
   // longTapTimeInterval: 400,
@@ -31,9 +69,9 @@ Vue.use(Vue2TouchEvents
 Vue.use(require('vue-moment'));
 
 
-library.add(fab, fas, far);
+// library.add(fab, fas, far);
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+// Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 import VCalendar from 'v-calendar';
 Vue.use(VCalendar)
@@ -49,9 +87,6 @@ Vue.mixin({
     $clone: require('rfdc')({ proto: true }),
   }
 })
-
-
-
 
 new Vue({
   router,

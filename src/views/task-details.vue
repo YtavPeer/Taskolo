@@ -210,7 +210,6 @@
                                     title="Due Date"
                                     @click="toggleSection('DueDate')"
                                 >
-                                    <!-- <font-awesome-icon class="icon" :icon="['far', 'clock']" /> -->
 
                                     <img
                                         class="task-prev-icon clock-icon-watch"
