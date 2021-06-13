@@ -52,10 +52,9 @@ export default {
   components: { VSwatches },
   methods: {
     setBackground(type, idx = null) {
-      if ( type === 'color')
-      this.$emit("setBackground",this.color)
-      else if(type === 'img')
-      this.$emit("setBackground",`url(${this.getImgUrl(idx)})`);
+      if (type === "color") this.$emit("setBackground", this.color);
+      else if (type === "img")
+        this.$emit("setBackground", `url(${this.getImgUrl(idx)})`);
     },
     getImgUrl(idx) {
       return require(`../../assets/images/${idx}.png`);

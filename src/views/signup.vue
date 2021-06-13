@@ -87,7 +87,6 @@ export default {
       if (this.credentials.email === "") this.isEditMail = false;
       if (re.test(this.credentials.email)) this.isValidMail = true;
       else this.isValidMail = false;
-      //   return re.test(email);
     },
     enterMail() {
       if (this.isValidMail) {
@@ -104,9 +103,9 @@ export default {
           type: "signup",
           userCred: user,
         });
-        if (loginUser) this.$router.push('/board')
+        if (loginUser) this.$router.push("/board");
       } catch (error) {
-        console.log('cannot sign up:', error)
+        console.log("cannot sign up:", error);
       }
     },
   },

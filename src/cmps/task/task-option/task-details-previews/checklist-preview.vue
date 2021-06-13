@@ -45,21 +45,18 @@
         v-model="todo.txt"
         ref="addItem"
       />
-      <div
-        v-if="isAddItemClicked || isEdit"
-        class="checklist-actions flex"
-      >
+      <div v-if="isAddItemClicked || isEdit" class="checklist-actions flex">
         <div class="checklist-button-container flex">
-          <button v-if="!isEdit" @click="addToChecklist" class="flex center">Add</button>
+          <button v-if="!isEdit" @click="addToChecklist" class="flex center">
+            Add
+          </button>
           <button v-else @click="editItem" class="flex center">Save</button>
-          <button @click="closeAddItemClicked" class="flex center"><img src="@/assets/task-icon/trello-icon-pack/close.svg"/></button>
+          <button @click="closeAddItemClicked" class="flex center">
+            <img src="@/assets/task-icon/trello-icon-pack/close.svg" />
+          </button>
         </div>
 
-        <div class="text-actions flex">
-          <!-- <button>Mention</button>
-          <button>Emoji</button>
-          <button>Assign</button> -->
-        </div>
+        <div class="text-actions flex"></div>
       </div>
     </div>
   </section>
@@ -76,7 +73,6 @@ export default {
   },
   data() {
     return {
-      // checklist: { ...this.checklistProp },
       checklist: null,
       todo: boardService.getEmptyTodo(),
       isAddItemClicked: false,
@@ -98,8 +94,8 @@ export default {
       const todoIdx = this.checklist.todos.findIndex(
         (todo) => todoId === todo.id
       );
-      this.checklist.todos[todoIdx].isDone = !this.checklist.todos[todoIdx]
-        .isDone;
+      this.checklist.todos[todoIdx].isDone =
+        !this.checklist.todos[todoIdx].isDone;
       this.$emit("update-checklist", this.checklist);
     },
     deleteChecklist() {
@@ -123,9 +119,6 @@ export default {
         this.$refs.todoItem[0].select();
       });
     },
-    // editItem() {
-    //     console.log('savingg///')
-    // },
     focusAddItemInput() {
       this.$nextTick(() => {
         this.$refs.addItem.focus();
@@ -146,8 +139,7 @@ export default {
     },
   },
   created() {
-    const clone = require("rfdc");
-    this.checklist = clone({ proto: true })(Object.create(this.checklistProp));
+    this.checklist = this.$clone(this.checklistProp);
   },
   components: {
     checklistDeleteConfirm,

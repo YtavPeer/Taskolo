@@ -70,7 +70,6 @@
     </div>
 
     <section class="chart-by-group flex">
-
       <div class="chart-task per-member">
         <h1>Tasks per member</h1>
         <chart-doughnut :data="countTaskPerMemberForDisplay"></chart-doughnut>
@@ -179,12 +178,11 @@ export default {
         group.tasks.forEach((task) => {
           if (!task.checklists) return;
           task.checklists.forEach((checklist) => {
-            checklist.todos.forEach((todo) => {
+            checklist.todos.forEach(() => {
               cnt++;
             });
           });
         });
-        console.log(dataDone);
         return cnt;
       });
       return dataDone;
@@ -210,12 +208,10 @@ export default {
             data: this.taskPerGroup,
           },
         ],
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: this.groupsName,
       };
     },
     taskPerMember() {
-    
       let taskPerMember = [];
 
       this.currBoard.members.forEach((member) => {
@@ -224,7 +220,7 @@ export default {
           if (!task.members) return;
           task.members.forEach((taskMember) => {
             if (member.fullname === taskMember.fullname) {
-              taskCnt = taskCnt+1;
+              taskCnt = taskCnt + 1;
             }
           });
         });
@@ -247,7 +243,6 @@ export default {
             data: this.taskPerMember,
           },
         ],
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: this.membersName,
       };
     },
@@ -275,7 +270,7 @@ export default {
     mainHeader,
     chart,
     chartDoughnut,
-    chartList
+    chartList,
   },
 };
 </script>

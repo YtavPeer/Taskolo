@@ -13,8 +13,6 @@
 </template>
 
 <script>
-// import { userService } from "../services/user.service";
-
 export default {
   computed: {
     user() {
@@ -23,12 +21,10 @@ export default {
   },
   methods: {
     async logout() {
-        await this.$store.dispatch({
-          type: "logout",
-        });      // userService.logout();
+      await this.$store.dispatch({
+        type: "logout",
+      });
       this.$router.push("/");
-
-      // this.$forceUpdate(); // Notice we have to use a $ here
     },
   },
 };

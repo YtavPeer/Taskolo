@@ -2,7 +2,6 @@
   <section v-if="boards" class="board-list">
     <main-header />
 
-    <h1>Board List</h1>
     <ul>
       <li
         class="board-preview"

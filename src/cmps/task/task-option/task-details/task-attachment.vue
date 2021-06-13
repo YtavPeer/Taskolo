@@ -1,30 +1,30 @@
 <template>
-    <section class="task-attchment flex column align-start">
-        <label for="attchment"> Attach a link</label>
-        <el-input
-            type="text"
-            name="attchment"
-            placeholder="Paste any link here..."
-            v-model="url"
-        />
-        <button @click="addUrl">Attach</button>
-    </section>
+  <section class="task-attchment flex column align-start">
+    <label for="attchment"> Attach a link</label>
+    <el-input
+      type="text"
+      name="attchment"
+      placeholder="Paste any link here..."
+      v-model="url"
+    />
+    <button @click="addUrl">Attach</button>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "task-attachment",
-    data() {
-        return {
-            url: "",
-        };
+  name: "task-attachment",
+  data() {
+    return {
+      url: "",
+    };
+  },
+  methods: {
+    addUrl() {
+      if (!this.url) return;
+      this.$emit("add-url", this.url);
     },
-    methods: {
-        addUrl() {
-            if (!this.url) return;
-            this.$emit("add-url", this.url);
-        },
-    },
+  },
 };
 </script>
 
