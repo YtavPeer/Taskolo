@@ -109,6 +109,9 @@ export default {
     getBoards() {
       return this.$store.getters.boards;
     },
+    loggedinUser() {
+      return this.$store.getters.loggedinUser;
+    },
   },
   methods: {
     openMenu() {
@@ -159,10 +162,12 @@ export default {
   },
   async mounted() {
     const user = { username: "demo", password: "123" };
-    await this.$store.dispatch({
-      type: "login",
-      userCred: user,
-    });
+    if (!loggedinUser()) {
+      await this.$store.dispatch({
+        type: "login",
+        userCred: user,
+      });
+    }
     this.onResize();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);

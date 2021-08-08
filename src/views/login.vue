@@ -63,6 +63,7 @@ export default {
     async login() {
       try {
         const user = this.$clone(Object.create(this.credentials));
+          // console.log('loginUser:', loginUser)
         const loginUser = await this.$store.dispatch({
           type: "login",
           userCred: user,
