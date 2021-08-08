@@ -157,7 +157,12 @@ export default {
       this.isMobileScreen = this.screenWidth <= 690 ? true : false;
     },
   },
-  mounted() {
+  async mounted() {
+    const user = { username: "demo", password: "123" };
+    await this.$store.dispatch({
+      type: "login",
+      userCred: user,
+    });
     this.onResize();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
