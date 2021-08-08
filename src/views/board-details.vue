@@ -162,7 +162,7 @@ export default {
   },
   async mounted() {
     const user = { username: "demo", password: "123" };
-    if (!loggedinUser()) {
+    if (!this.loggedinUser) {
       await this.$store.dispatch({
         type: "login",
         userCred: user,
